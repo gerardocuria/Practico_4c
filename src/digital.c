@@ -11,7 +11,7 @@ struct  digital_input_s {
     uint8_t port;
     uint_t pin;
     bool inverted;
-    bool allocated;
+    bool allocated:1;
 };
 
 
@@ -88,7 +88,7 @@ bool DigitalInputGetState(digital_input_t input){
     return input->inverted ^ Chip_GPIO_ReadPortBit(LPC_GPIO_PORT, input->port,input->pin);
 }
 
-bool DigitallInputHasChanged(digital_input_t input){
+bool DigitalInputHasChanged(digital_input_t input){
     return false;
 }
 
